@@ -1,0 +1,4 @@
+E:\CS3113\CS3113\Templates\VisualStudioSDLProject\SDLProject\Debug\SDLProject.exe
+E:\CS3113\CS3113\Templates\VisualStudioSDLProject\SDLProject\Debug\SDLProject.pdb
+E:\CS-UY-3113\P1\SDLProject\Debug\SDLProject.exe
+E:\CS-UY-3113\P1\SDLProject\Debug\SDLProject.pdb
