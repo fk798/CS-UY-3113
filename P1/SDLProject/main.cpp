@@ -20,14 +20,18 @@ bool gameIsRunning = true;
 ShaderProgram program;
 glm::mat4 viewMatrix, shipMatrix, asteroidMatrix, projectionMatrix;
 
+// scale variables for shipMatrix
 float xCoord;
 float yCoord;
 bool moveRight;
+
+// rotate variable for asteroidMatrix
 float rotateAsteroid;
 
+// for deltaTime
 float lastTicks = 0.0f;
 
-
+//textures
 GLuint shipTextureID;
 GLuint asteroidTextureID;
 
@@ -70,6 +74,7 @@ void Initialize() {
     shipMatrix = glm::mat4(1.0f);
     asteroidMatrix = glm::mat4(1.0f);
     projectionMatrix = glm::ortho(-5.0f, 5.0f, -3.75f, 3.75f, -1.0f, 1.0f);
+    
     xCoord = 0.0f;
     yCoord = 0.0f;
     moveRight = true;
@@ -106,23 +111,28 @@ void Update() {
     float ticks = (float)SDL_GetTicks() / 1000.0f;
     float deltaTime = ticks - lastTicks;
     lastTicks = ticks;
-    if (xCoord >= 5.0f * deltaTime) {
+    
+    // change direction of ship
+    if (xCoord >= 5.0f) {
         moveRight = false;
     }
-    else if (xCoord <= -5.0f * deltaTime) {
+    else if (xCoord <= -5.0f) {
         moveRight = true;
     }
 
     if (moveRight == true) {
-        xCoord += 0.1f * deltaTime;
+        xCoord += 2.0f*deltaTime;
     }
     else {
-        xCoord -= 0.1f * deltaTime;
+        xCoord -= 2.0f*deltaTime;
     }
-    yCoord += 0.0f * deltaTime;
-    rotateAsteroid = 45.0f * deltaTime;
+    
+    rotateAsteroid += 90.0f * deltaTime;
+    
+    shipMatrix = glm::mat4(1.0f);
+    shipMatrix = glm::translate(shipMatrix, glm::vec3(xCoord, -2.0f, 0.0f)); // translate
 
-    shipMatrix = glm::translate(shipMatrix, glm::vec3(xCoord, yCoord, 0.0f)); // translate
+    asteroidMatrix = glm::mat4(1.0f);
     asteroidMatrix = glm::rotate(asteroidMatrix, glm::radians(rotateAsteroid), glm::vec3(0.0f, 0.0f, 1.0f)); // rotate
     //modelMatrix = glm::scale(modelMatrix1, glm::vec3(1.01f, 1.01f, 1.0f)); // scaling
 }
