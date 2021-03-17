@@ -20,7 +20,7 @@
 #include <vector>
 using namespace std;
 
-#define PLATFORM_COUNT 25
+#define PLATFORM_COUNT 29
 struct GameState {
     Entity *player;
     Entity *platforms;
@@ -94,24 +94,12 @@ void Initialize() {
     state.player = new Entity();
     state.player->position = glm::vec3(0, 3.25, 0);
     state.player->movement = glm::vec3(0);
-    state.player->acceleration = glm::vec3(0, -0.05f, 0);
+    state.player->acceleration = glm::vec3(0, -0.1f, 0);
     state.player->speed = 1.5f;
-    state.player->textureID = LoadTexture("george_0.png");
+    state.player->textureID = LoadTexture("playerShip3_orange.png");
     
-    state.player->animRight = new int[4] {3, 7, 11, 15};
-    state.player->animLeft = new int[4] {1, 5, 9, 13};
-    state.player->animUp = new int[4] {2, 6, 10, 14};
-    state.player->animDown = new int[4] {0, 4, 8, 12};
-
-    state.player->animIndices = state.player->animRight;
-    state.player->animFrames = 4;
-    state.player->animIndex = 0;
-    state.player->animTime = 0;
-    state.player->animCols = 4;
-    state.player->animRows = 4;
-    
-    state.player->height = 0.8f;
-    state.player->width = 0.8f;
+    state.player->height = 1.0f;
+    state.player->width = 1.0f;
     
     state.player->jumpPower = 5.0f;
     
@@ -140,6 +128,17 @@ void Initialize() {
         state.platforms[i].textureID = platformTextureID;
         state.platforms[i].position = glm::vec3(x, y, 0);
         y += 1;
+    }
+    x = 1;
+    y = 1;
+    for (int i = 25; i < PLATFORM_COUNT; ++i) {
+        if (i == 27) {
+            y = -1;
+            x = -3;
+        }
+        state.platforms[i].textureID = platformTextureID;
+        state.platforms[i].position = glm::vec3(x, y, 0);
+        x += 1;
     }
     
     state.platforms[7].textureID = landingSiteTextureID;
@@ -189,12 +188,10 @@ void ProcessInput() {
     if (keys[SDL_SCANCODE_LEFT]) {
         state.player->acceleration.x += -1.0f;
         //state.player->movement.x = -1.0f;
-        state.player->animIndices = state.player->animLeft;
     }
     else if (keys[SDL_SCANCODE_RIGHT]) {
         state.player->acceleration.x += 1.0f;
         //state.player->movement.x = 1.0f;
-        state.player->animIndices = state.player->animRight;
     }
     
 
@@ -294,10 +291,10 @@ void Render() {
     state.player->Render(&program);
     
     if (missionPass == -1) {
-        DrawText(&program, fontTextureID, "Mission Failed!", 1, -0.5, glm::vec3(-4.25f, 3, 0));
+        DrawText(&program, fontTextureID, "Mission Failed!", 1, -0.5, glm::vec3(-3.375f, 0, 0));
     }
     else if (missionPass == 1) {
-        DrawText(&program, fontTextureID, "Mission Succeeded!", 1, -0.5, glm::vec3(-4.25f, 3, 0));
+        DrawText(&program, fontTextureID, "Mission Succeeded!", 1, -0.5, glm::vec3(-4.125f, 0, 0));
     }
     
     SDL_GL_SwapWindow(displayWindow);
