@@ -66,14 +66,14 @@ public:
     void CheckCollisionsY(Entity *objects, int objectCount);
     void CheckCollisionsX(Entity *objects, int objectCount);
     void CheckEnemyCollided(Entity *enemies, int enemyCount);
-    void CheckPit(glm::vec3 sensorLeft, glm::vec3 sensorRight);
+    void CheckPit(Entity *platforms, int platformCount);
     
     void Update(float deltaTime, Entity *player, Entity *platforms, int platformCount);
     void Render(ShaderProgram *program);
     void DrawSpriteFromTextureAtlas(ShaderProgram *program, GLuint textureID, int index);
     
-    void AI(Entity *player);
-    void AIWalker();
+    void AI(Entity *player, Entity *platforms, int platformCount);
+    void AIWalker(Entity *platforms, int platformCount);
     void AIWaitAndGo(Entity *player);
     void AIJumper();
 };

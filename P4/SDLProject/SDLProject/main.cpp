@@ -136,19 +136,19 @@ void Initialize() {
     for (int i = 11; i < 13; ++i) {
         state.platforms[i].entityType = PLATFORM;
         state.platforms[i].textureID = platformTextureID;
-        state.platforms[i].position = glm::vec3(0.0 + i - 10, -1.25f, 0);
+        state.platforms[i].position = glm::vec3(0.0 + i - 11, -1.25f, 0);
     }
     
     for (int i = 13; i < 15; ++i) {
         state.platforms[i].entityType = PLATFORM;
         state.platforms[i].textureID = platformTextureID;
-        state.platforms[i].position = glm::vec3(-3 + i - 10, -2.25f, 0);
+        state.platforms[i].position = glm::vec3(-1 + i - 13, -2.25f, 0);
     }
     
     for (int i = 15; i < PLATFORM_COUNT; ++i) {
         state.platforms[i].entityType = PLATFORM;
         state.platforms[i].textureID = platformTextureID;
-        state.platforms[i].position = glm::vec3(-7 + i - 10, 0.0f, 0);
+        state.platforms[i].position = glm::vec3(-3 + i - 15, 0.0f, 0);
     }
     for (int i = 0; i < PLATFORM_COUNT; i++) {
         state.platforms[i].Update(0, NULL, NULL, 0);
@@ -168,7 +168,7 @@ void Initialize() {
     
     state.enemies[1].entityType = ENEMY;
     state.enemies[1].textureID = enemyTextureID;
-    state.enemies[1].position = glm::vec3(2.0f, 0.0f, 0);
+    state.enemies[1].position = glm::vec3(1.0f, 0.0f, 0);
     state.enemies[1].speed = 1;
     state.enemies[1].aiType = JUMPER;
     state.enemies[1].aiState = JUMPING;
@@ -177,7 +177,7 @@ void Initialize() {
     
     state.enemies[2].entityType = ENEMY;
     state.enemies[2].textureID = enemyTextureID;
-    state.enemies[2].position = glm::vec3(-1.0f, 0.0f, 0);
+    state.enemies[2].position = glm::vec3(-3.0f, 0.0f, 0);
     state.enemies[2].speed = 1;
     state.enemies[2].aiType = WALKER;
     state.enemies[2].aiState = WALKING;
@@ -265,9 +265,6 @@ void Update() {
         state.enemies[1].jump = true;
     }
     
-    // have enemy check sensor
-    //state.enemies[2].Check
-    
    float ticks = (float)SDL_GetTicks() / 1000.0f;
    float deltaTime = ticks - lastTicks;
    lastTicks = ticks;
@@ -346,10 +343,10 @@ void Render() {
     state.player->Render(&program);
     
     if (missionPass == -1) {
-        DrawText(&program, fontTextureID, "You Lose!", 1, -0.5, glm::vec3(-3.375f, 0, 0));
+        DrawText(&program, fontTextureID, "You Lose!", 1, -0.5, glm::vec3(-2.0f, 0, 0));
     }
     else if (missionPass == 1) {
-        DrawText(&program, fontTextureID, "You Win!", 1, -0.5, glm::vec3(-4.125f, 0, 0));
+        DrawText(&program, fontTextureID, "You Win!", 1, -0.5, glm::vec3(-1.785f, 0, 0));
     }
     
     SDL_GL_SwapWindow(displayWindow);

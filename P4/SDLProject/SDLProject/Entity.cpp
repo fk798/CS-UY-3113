@@ -1,4 +1,6 @@
 #include "Entity.h"
+#include <iostream>
+using namespace std;
 
 Entity::Entity()
 {
@@ -79,10 +81,28 @@ void Entity::CheckEnemyCollided(Entity *enemies, int enemyCount) {
     }
 }
 
-void Entity::AI(Entity *player) {
+void Entity::CheckPit(Entity *platforms, int platformCount) {
+    int leftLocation = -1;
+    int rightLocation = -1;
+    glm::vec3 sensorRight = glm::vec3(position.x + 0.6f, position.y - 0.6f, 0);
+    glm::vec3 sensorLeft = glm::vec3(position.x - 0.6f, position.y - 0.6f, 0);
+    for (int i = 0; i < platformCount; ++i) {
+        float leftDistX = fabs(sensorLeft.x - platforms[i].position.x) - ((width + platforms[i].width) / 2.0f);
+        float rightDistX = fabs(sensorRight.x - platforms[i].position.x) - ((width + platforms[i].width) / 2.0f);
+        float leftDistY = fabs(sensorLeft.y - platforms[i].position.y) - ((height + platforms[i].height) / 2.0f);
+        float rightDistY = fabs(sensorRight.y - platforms[i].position.y) - ((height + platforms[i].height) / 2.0f);
+        
+        if (leftDistX < 0 && leftDistY < 0) leftLocation = i;
+        if (rightDistX < 0 && rightDistY < 0) rightLocation = i;
+    }
+    if (leftLocation == -1) pitLeft = true;
+    if (rightLocation == -1) pitRight = true;
+}
+
+void Entity::AI(Entity *player, Entity *platforms, int platformCount) {
     switch(aiType) {
         case WALKER:
-            AIWalker();
+            AIWalker(platforms, platformCount);
             break;
         case WAITANDGO:
             AIWaitAndGo(player);
@@ -100,15 +120,18 @@ void Entity::AIJumper() {
     }
 }
 
-void Entity::AIWalker() {
+void Entity::AIWalker(Entity *platforms, int platformCount) {
     if (movement == glm::vec3(0)) {
         movement = glm::vec3(-1, 0, 0);
     }
+    CheckPit(platforms, platformCount);
     if (pitLeft) {
         movement = glm::vec3(1, 0, 0);
+        pitLeft = false;
     }
-    else if (pitRight) {
+    if (pitRight) {
         movement = glm::vec3(-1, 0, 0);
+        pitRight = false;
     }
 }
 
@@ -151,7 +174,7 @@ void Entity::Update(float deltaTime, Entity *player, Entity *platforms, int plat
     pitRight = false;
     
     if (entityType == ENEMY) {
-        AI(player);
+        AI(player, platforms, platformCount);
     }
     
     if (animIndices != NULL) {
@@ -185,18 +208,6 @@ void Entity::Update(float deltaTime, Entity *player, Entity *platforms, int plat
     
     position.x += velocity.x * deltaTime; // Move on X
     CheckCollisionsX(platforms, platformCount);// Fix if needed
-    
-    /*if (player != this && entityType == ENEMY) {
-        //CheckCollisionsX(player, 1);
-        CheckCollisionsY(player, 1);
-        if (collidedTop) {
-            isActive = false;
-        }
-    }*/
-    
-    glm::vec3 sensorRight = glm::vec3(position.x + 0.6f, position.y - 0.6f, 0);
-    glm::vec3 sensorLeft = glm::vec3(position.x - 0.6f, position.y - 0.6f, 0);
-    //CheckPit(sensorLeft, sensorRight);
     
     modelMatrix = glm::mat4(1.0f);
     modelMatrix = glm::translate(modelMatrix, position);
