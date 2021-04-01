@@ -66,9 +66,18 @@ void Entity::CheckCollisionsX(Entity *objects, int objectCount)
 } }
 } }
 
-/*void CheckPit(glm::vec3 sensorLeft, glm::vec3 sensorRight) {
-    
-}*/
+void Entity::CheckEnemyCollided(Entity *enemies, int enemyCount) {
+    for (int i = 0; i < enemyCount; ++i) {
+        if (CheckCollision(&enemies[i])) {
+            if (velocity.y < 0 && enemies[i].position.y <= position.y) {
+                enemies[i].isActive = false;
+            }
+            else {
+                isActive = false;
+            }
+        }
+    }
+}
 
 void Entity::AI(Entity *player) {
     switch(aiType) {
@@ -78,15 +87,22 @@ void Entity::AI(Entity *player) {
         case WAITANDGO:
             AIWaitAndGo(player);
             break;
+        case JUMPER:
+            AIJumper();
+            break;
+    }
+}
+
+void Entity::AIJumper() {
+    if (jump) {
+        jump = false;
+        velocity.y += jumpPower;
     }
 }
 
 void Entity::AIWalker() {
     if (movement == glm::vec3(0)) {
         movement = glm::vec3(-1, 0, 0);
-    }
-    else {
-        movement = movement;
     }
     if (pitLeft) {
         movement = glm::vec3(1, 0, 0);
@@ -111,6 +127,9 @@ void Entity::AIWaitAndGo(Entity *player) {
             else {
                 movement = glm::vec3(1, 0, 0);
             }
+            break;
+            
+        case JUMPING:
             break;
             
         case ATTACKING:

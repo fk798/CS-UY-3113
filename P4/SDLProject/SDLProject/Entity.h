@@ -13,8 +13,8 @@
 
 enum EntityType {PLAYER, PLATFORM, ENEMY};
 
-enum AIType {WALKER, WAITANDGO};
-enum AIState {IDLE, WALKING, ATTACKING};
+enum AIType {WALKER, WAITANDGO, JUMPER};
+enum AIState {IDLE, WALKING, ATTACKING, JUMPING};
 
 class Entity {
 public:
@@ -65,11 +65,15 @@ public:
     bool CheckCollision(Entity *other);
     void CheckCollisionsY(Entity *objects, int objectCount);
     void CheckCollisionsX(Entity *objects, int objectCount);
+    void CheckEnemyCollided(Entity *enemies, int enemyCount);
+    void CheckPit(glm::vec3 sensorLeft, glm::vec3 sensorRight);
+    
     void Update(float deltaTime, Entity *player, Entity *platforms, int platformCount);
     void Render(ShaderProgram *program);
     void DrawSpriteFromTextureAtlas(ShaderProgram *program, GLuint textureID, int index);
+    
     void AI(Entity *player);
     void AIWalker();
     void AIWaitAndGo(Entity *player);
-    //void CheckPit(glm::vec3 sensorLeft, glm::vec3 sensorRight);
+    void AIJumper();
 };

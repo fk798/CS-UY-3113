@@ -20,8 +20,8 @@
 #include <vector>
 using namespace std;
 
-#define PLATFORM_COUNT 14
-#define ENEMY_COUNT 1
+#define PLATFORM_COUNT 17
+#define ENEMY_COUNT 3
 
 struct GameState {
     Entity *player;
@@ -114,10 +114,10 @@ void Initialize() {
     state.player->animCols = 4;
     state.player->animRows = 4;
     
-    state.player->height = 1.0f;
-    state.player->width = 1.0f;
+    state.player->height = 0.8f;
+    state.player->width = 0.8f;
     
-    state.player->jumpPower = 5.0f;
+    state.player->jumpPower = 7.0f;
     
     state.platforms = new Entity[PLATFORM_COUNT];
     GLuint platformTextureID = LoadTexture("platformPack_tile001.png");
@@ -133,12 +133,23 @@ void Initialize() {
         state.platforms[i].position = glm::vec3(-5 + i, -3.25f, 0);
     }
     
-    for (int i = 11; i < PLATFORM_COUNT; ++i) {
+    for (int i = 11; i < 13; ++i) {
         state.platforms[i].entityType = PLATFORM;
         state.platforms[i].textureID = platformTextureID;
-        state.platforms[i].position = glm::vec3(-3 + i - 10, 0.0f, 0);
+        state.platforms[i].position = glm::vec3(0.0 + i - 10, -1.25f, 0);
     }
     
+    for (int i = 13; i < 15; ++i) {
+        state.platforms[i].entityType = PLATFORM;
+        state.platforms[i].textureID = platformTextureID;
+        state.platforms[i].position = glm::vec3(-3 + i - 10, -2.25f, 0);
+    }
+    
+    for (int i = 15; i < PLATFORM_COUNT; ++i) {
+        state.platforms[i].entityType = PLATFORM;
+        state.platforms[i].textureID = platformTextureID;
+        state.platforms[i].position = glm::vec3(-7 + i - 10, 0.0f, 0);
+    }
     for (int i = 0; i < PLATFORM_COUNT; i++) {
         state.platforms[i].Update(0, NULL, NULL, 0);
     }
@@ -152,6 +163,26 @@ void Initialize() {
     state.enemies[0].speed = 1;
     state.enemies[0].aiType = WAITANDGO;
     state.enemies[0].aiState = IDLE;
+    state.enemies[0].jumpPower = 5.0f;
+    state.enemies[0].acceleration = glm::vec3(0, -9.81, 0);
+    
+    state.enemies[1].entityType = ENEMY;
+    state.enemies[1].textureID = enemyTextureID;
+    state.enemies[1].position = glm::vec3(2.0f, 0.0f, 0);
+    state.enemies[1].speed = 1;
+    state.enemies[1].aiType = JUMPER;
+    state.enemies[1].aiState = JUMPING;
+    state.enemies[1].jumpPower = 5.0f;
+    state.enemies[1].acceleration = glm::vec3(0, -9.81, 0);
+    
+    state.enemies[2].entityType = ENEMY;
+    state.enemies[2].textureID = enemyTextureID;
+    state.enemies[2].position = glm::vec3(-1.0f, 0.0f, 0);
+    state.enemies[2].speed = 1;
+    state.enemies[2].aiType = WALKER;
+    state.enemies[2].aiState = WALKING;
+    state.enemies[2].jumpPower = 5.0f;
+    state.enemies[2].acceleration = glm::vec3(0, -9.81, 0);
  
 }
 
@@ -191,12 +222,10 @@ void ProcessInput() {
     const Uint8 *keys = SDL_GetKeyboardState(NULL);
 
     if (keys[SDL_SCANCODE_LEFT]) {
-        //state.player->acceleration.x += -1.0f;
         state.player->movement.x = -1.0f;
         state.player->animIndices = state.player->animLeft;
     }
     else if (keys[SDL_SCANCODE_RIGHT]) {
-        //state.player->acceleration.x += 1.0f;
         state.player->movement.x = 1.0f;
         state.player->animIndices = state.player->animRight;
     }
@@ -212,13 +241,10 @@ void ProcessInput() {
 float lastTicks = 0;
 float accumulator = 0.0f;
 void Update() {
-    state.player->CheckCollisionsX(state.enemies, ENEMY_COUNT);
-    state.player->CheckCollisionsY(state.enemies, ENEMY_COUNT);
-    
-    for (int i = 0; i < ENEMY_COUNT; ++i) {
-        if (state.enemies[i].collidedTop == true) {
-            state.enemies[i].isActive = false;
-        }
+    state.player->CheckEnemyCollided(state.enemies, ENEMY_COUNT);
+    if (state.player->isActive == false) {
+        missionPass = -1;
+        return;
     }
     
     bool anyAlive = false;
@@ -233,11 +259,14 @@ void Update() {
         return;
     }
     
-    if (state.player->collidedLeft || state.player->collidedRight || state.player->collidedTop) {
-        state.player->isActive = false;
-        missionPass = -1;
-        return;
+    // have enemy jump
+    state.enemies[1].CheckCollisionsY(state.platforms, PLATFORM_COUNT);
+    if (state.enemies[1].collidedBottom && state.enemies[1].jump == false) {
+        state.enemies[1].jump = true;
     }
+    
+    // have enemy check sensor
+    //state.enemies[2].Check
     
    float ticks = (float)SDL_GetTicks() / 1000.0f;
    float deltaTime = ticks - lastTicks;
