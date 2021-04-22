@@ -69,6 +69,9 @@ void Entity::CheckCollisionsX(Entity *objects, int objectCount)
 } }
 
 void Entity::CheckEnemyCollided(Entity *enemies, int enemyCount) {
+    collidedLeft = false;
+    collidedRight = false;
+    collidedTop = false;
     CheckCollisionsX(enemies, enemyCount);
     if (collidedLeft == true || collidedRight == true) isActive = false;
     CheckCollisionsY(enemies, enemyCount);
