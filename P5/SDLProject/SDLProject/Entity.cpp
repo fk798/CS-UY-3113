@@ -69,17 +69,31 @@ void Entity::CheckCollisionsX(Entity *objects, int objectCount)
 } }
 
 void Entity::CheckEnemyCollided(Entity *enemies, int enemyCount) {
-    for (int i = 0; i < enemyCount; ++i) {
+    CheckCollisionsX(enemies, enemyCount);
+    if (collidedLeft == true || collidedRight == true) isActive = false;
+    CheckCollisionsY(enemies, enemyCount);
+    if (collidedTop == true) isActive = false;
+    if (collidedBottom == true) {
+        for (int i = 0; i < enemyCount; ++i) {
+            if (enemies[i].collidedTop == true) {
+                enemies[i].isActive = false;
+            }
+        }
+    }
+    
+    /*for (int i = 0; i < enemyCount; ++i) {
         if (CheckCollision(&enemies[i])) {
-            if (velocity.y < 0 && enemies[i].position.y <= position.y) {
+            if (collidedBottom && enemies[i].collidedTop) {
+                cout << "enemy dead" << endl;
                 enemies[i].isActive = false;
             }
             else {
+                cout << "we ded" << endl;
                 isActive = false;
                 break;
             }
         }
-    }
+    }*/
 }
 
 void Entity::CheckCollisionsY(Map *map)
@@ -240,9 +254,6 @@ void Entity::Update(float deltaTime, Entity *player, Entity *objects, int object
     if (entityType == ENEMY) {
         AI(player);
     }
-    else {
-        CheckEnemyCollided(objects, objectCount);
-    }
     
     if (animIndices != NULL) {
         if (glm::length(movement) != 0) {
@@ -278,8 +289,9 @@ void Entity::Update(float deltaTime, Entity *player, Entity *objects, int object
     
     
     if(entityType == PLAYER) {
-        CheckCollisionsY(objects, objectCount);
-        CheckCollisionsX(objects, objectCount);
+        //CheckCollisionsY(objects, objectCount);
+        //CheckCollisionsX(objects, objectCount);
+        CheckEnemyCollided(objects, objectCount);
     }
     
     modelMatrix = glm::mat4(1.0f);

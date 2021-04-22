@@ -27,7 +27,7 @@ void Level2::Initialize(int numLives) {
     // Initialize Player
     state.player = new Entity();
     state.player->entityType = PLAYER;
-    state.player->position = glm::vec3(5, 0, 0);
+    state.player->position = glm::vec3(1, -2, 0);
     state.player->movement = glm::vec3(0);
     state.player->acceleration = glm::vec3(0, -9.81f, 0);
     state.player->speed = 3.0f;
@@ -57,7 +57,7 @@ void Level2::Initialize(int numLives) {
     
     state.enemies[0].entityType = ENEMY;
     state.enemies[0].textureID = enemyTextureID;
-    state.enemies[0].position = glm::vec3(4, -2.25, 0);
+    state.enemies[0].position = glm::vec3(12, -2, 0);
     state.enemies[0].speed = 1;
     state.enemies[0].aiType = WAITANDGO;
     state.enemies[0].aiState = IDLE;
@@ -83,7 +83,7 @@ void Level2::Initialize(int numLives) {
     state.enemies[2].acceleration = glm::vec3(0, -9.81, 0);
     */
     for (int i = 0; i < LEVEL2_ENEMY_COUNT; ++i) {
-        state.enemies[i].isActive = false;
+        state.enemies[i].isActive = true;
     }
 }
 void Level2::Update(float deltaTime) {
@@ -101,18 +101,19 @@ void Level2::Update(float deltaTime) {
             break;
         }
     }
-    if (state.player->position.x >= 12) {
+    if (state.player->position.x >= 12 && state.player->position.y <= -3) {
         state.nextScene = 3;
     }
     if (state.player->position.y <= -10 || state.player->isActive == false) {
         state.player->isActive = true;
         state.player->numLives -= 1;
-        state.player->position = glm::vec3(1, 0, 0);
+        state.player->position = glm::vec3(1, -2, 0);
     }
 }
 void Level2::Render(ShaderProgram *program) {
     Util::DrawText(program, Util::LoadTexture("font1.png"), "Level 2", 1.0f, -0.1f, glm::vec3(2, -2, 0));
     Util::DrawText(program, Util::LoadTexture("font1.png"), "Lives " + std::to_string(state.player->numLives), 1.0f, -0.1f, glm::vec3(2, -3, 0));
+    Util::DrawText(program, Util::LoadTexture("font1.png"), "Portal->", 1.0f, -0.1f, glm::vec3(6, -4, 0));
     state.map->Render(program);
     state.player->Render(program);
     for (int i = 0; i < LEVEL2_ENEMY_COUNT; ++i) {

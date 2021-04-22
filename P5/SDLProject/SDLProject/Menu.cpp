@@ -35,7 +35,9 @@ void Menu::Update(float deltaTime) {
     }
 }
 void Menu::Render(ShaderProgram *program) {
-    Util::DrawText(program, Util::LoadTexture("font1.png"), "Hello World!", 1, -0.5, glm::vec3(2.25f, -2.0f, 0));
-    Util::DrawText(program, Util::LoadTexture("font1.png"), "Press Return", 1, -0.5, glm::vec3(2.25f, -3.0f, 0));
-    Util::DrawText(program, Util::LoadTexture("font1.png"), "to Start", 1, -0.5, glm::vec3(3.25f, -4.0f, 0));
+    Util::DrawText(program, Util::LoadTexture("font1.png"), "A Really Terrible!", 1, -0.5, glm::vec3(0.75f, -2.0f, 0));
+    Util::DrawText(program, Util::LoadTexture("font1.png"), "Game!", 1, -0.5, glm::vec3(3.75f, -3.0f, 0));
+    Util::DrawText(program, Util::LoadTexture("font1.png"), "By Faisal Karim", 1, -0.5, glm::vec3(1.0f, -4.0f, 0));
+    Util::DrawText(program, Util::LoadTexture("font1.png"), "Press Return", 1, -0.5, glm::vec3(2.25f, -5.0f, 0));
+    Util::DrawText(program, Util::LoadTexture("font1.png"), "to Start", 1, -0.5, glm::vec3(3.25f, -6.0f, 0));
 }
