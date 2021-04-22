@@ -27,6 +27,7 @@
 #include "Level2.h"
 #include "Level3.h"
 #include "Lose.h"
+#include "Win.h"
 
 using namespace std;
 
@@ -44,7 +45,7 @@ Mix_Chunk *bounce;
 
 // Add some variables and SwitchToScene function
 Scene *currentScene;
-Scene *sceneList[5];
+Scene *sceneList[6];
 
 void SwitchToScene(Scene *scene) {
     currentScene = scene;
@@ -93,6 +94,7 @@ void Initialize() {
     sceneList[2] = new Level2();
     sceneList[3] = new Level3();
     sceneList[4] = new Lose();
+    sceneList[5] = new Win();
     SwitchToScene(sceneList[0]);
     
 }
@@ -189,13 +191,6 @@ void Render() {
     program.SetViewMatrix(viewMatrix);
     
     currentScene->Render(&program);
-    
-    /*if (missionPass == -1) {
-        Util::DrawText(&program, fontTextureID, "You Lose!", 1, -0.5, glm::vec3(-2.0f, 0, 0));
-    }
-    else if (missionPass == 1) {
-        Util::DrawText(&program, fontTextureID, "You Win!", 1, -0.5, glm::vec3(-1.785f, 0, 0));
-    }*/
     
     SDL_GL_SwapWindow(displayWindow);
 }

@@ -76,6 +76,7 @@ void Entity::CheckEnemyCollided(Entity *enemies, int enemyCount) {
             }
             else {
                 isActive = false;
+                break;
             }
         }
     }
@@ -160,11 +161,13 @@ void Entity::CheckPit(Entity *platforms, int platformCount) {
     if (rightLocation == -1) pitRight = true;
 }
 
-void Entity::AI(Entity *player, Entity *platforms, int platformCount) {
+void Entity::AI(Entity *player) {
     switch(aiType) {
         case WALKER:
-            AIWalker(platforms, platformCount);
             break;
+        /*case WALKER:
+            AIWalker(platforms, platformCount);
+            break;*/
         case WAITANDGO:
             AIWaitAndGo(player);
             break;
@@ -234,9 +237,12 @@ void Entity::Update(float deltaTime, Entity *player, Entity *objects, int object
     pitLeft = false;
     pitRight = false;
     
-    /*if (entityType == ENEMY) {
-        AI(player, platforms, platformCount);
-    }*/
+    if (entityType == ENEMY) {
+        AI(player);
+    }
+    else {
+        CheckEnemyCollided(objects, objectCount);
+    }
     
     if (animIndices != NULL) {
         if (glm::length(movement) != 0) {
@@ -266,10 +272,15 @@ void Entity::Update(float deltaTime, Entity *player, Entity *objects, int object
     
     position.y += velocity.y * deltaTime;
     CheckCollisionsY(map);
-    CheckCollisionsY(objects, objectCount);
+    
     position.x += velocity.x * deltaTime;
     CheckCollisionsX(map);
-    CheckCollisionsX(objects, objectCount);
+    
+    
+    if(entityType == PLAYER) {
+        CheckCollisionsY(objects, objectCount);
+        CheckCollisionsX(objects, objectCount);
+    }
     
     modelMatrix = glm::mat4(1.0f);
     modelMatrix = glm::translate(modelMatrix, position);

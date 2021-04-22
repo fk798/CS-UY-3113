@@ -77,7 +77,7 @@ public:
     void Render(ShaderProgram *program);
     void DrawSpriteFromTextureAtlas(ShaderProgram *program, GLuint textureID, int index);
     
-    void AI(Entity *player, Entity *platforms, int platformCount);
+    void AI(Entity *player);
     void AIWalker(Entity *platforms, int platformCount);
     void AIWaitAndGo(Entity *player);
     void AIJumper();

@@ -20,6 +20,7 @@
 		9875B68B2630676900588479 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9875B6892630676900588479 /* Menu.cpp */; };
 		9875B6902630BED000588479 /* Level3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9875B68E2630BED000588479 /* Level3.cpp */; };
 		9875B6952630C55B00588479 /* Lose.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9875B6932630C55B00588479 /* Lose.cpp */; };
+		9875B69A2631064F00588479 /* Win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9875B6982631064F00588479 /* Win.cpp */; };
 		987E42D025FC5964001B4E2A /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 987E42CE25FC5964001B4E2A /* Entity.cpp */; };
 		987E42D525FC5BFA001B4E2A /* platformPack_tile001.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 987E42D425FC5BEF001B4E2A /* platformPack_tile001.png */; };
 		987E42D825FC8C66001B4E2A /* platformPack_tile016.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 987E42D725FC8C53001B4E2A /* platformPack_tile016.png */; };
@@ -81,6 +82,8 @@
 		9875B68F2630BED000588479 /* Level3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Level3.h; sourceTree = "<group>"; };
 		9875B6932630C55B00588479 /* Lose.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Lose.cpp; sourceTree = "<group>"; };
 		9875B6942630C55B00588479 /* Lose.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lose.h; sourceTree = "<group>"; };
+		9875B6982631064F00588479 /* Win.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Win.cpp; sourceTree = "<group>"; };
+		9875B6992631064F00588479 /* Win.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Win.h; sourceTree = "<group>"; };
 		987E42CE25FC5964001B4E2A /* Entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		987E42CF25FC5964001B4E2A /* Entity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		987E42D425FC5BEF001B4E2A /* platformPack_tile001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platformPack_tile001.png; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 				9875B68F2630BED000588479 /* Level3.h */,
 				9875B6932630C55B00588479 /* Lose.cpp */,
 				9875B6942630C55B00588479 /* Lose.h */,
+				9875B6982631064F00588479 /* Win.cpp */,
+				9875B6992631064F00588479 /* Win.h */,
 			);
 			path = SDLProject;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				DBDF1B532323DE3F007CECB1 /* main.cpp in Sources */,
 				987E42D025FC5964001B4E2A /* Entity.cpp in Sources */,
 				9875B6902630BED000588479 /* Level3.cpp in Sources */,
+				9875B69A2631064F00588479 /* Win.cpp in Sources */,
 				9875B672262DDFC500588479 /* Map.cpp in Sources */,
 				DBDF1B5E2323DE8D007CECB1 /* ShaderProgram.cpp in Sources */,
 				9875B686262FD25400588479 /* Level2.cpp in Sources */,

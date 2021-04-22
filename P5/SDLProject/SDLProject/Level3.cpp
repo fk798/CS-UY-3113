@@ -2,8 +2,7 @@
 #define Level3_WIDTH 14
 #define Level3_HEIGHT 8
 
-#define Level3_ENEMY_COUNT 1
-
+#define LEVEL3_ENEMY_COUNT 1
 using namespace std;
 
 unsigned int Level3_data[] =
@@ -52,7 +51,7 @@ void Level3::Initialize(int numLives) {
     
     state.player->jumpPower = 7.0f;
     
-    state.enemies = new Entity[Level3_ENEMY_COUNT];
+    state.enemies = new Entity[LEVEL3_ENEMY_COUNT];
     GLuint enemyTextureID = Util::LoadTexture("ctg.png");
     
     state.enemies[0].entityType = ENEMY;
@@ -82,23 +81,41 @@ void Level3::Initialize(int numLives) {
     state.enemies[2].jumpPower = 5.0f;
     state.enemies[2].acceleration = glm::vec3(0, -9.81, 0);
     */
-    for (int i = 0; i < Level3_ENEMY_COUNT; ++i) {
+    for (int i = 0; i < LEVEL3_ENEMY_COUNT; ++i) {
         state.enemies[i].isActive = false;
     }
 }
 void Level3::Update(float deltaTime) {
-    state.player->Update(deltaTime, state.player, state.enemies, Level3_ENEMY_COUNT, state.map);
+    state.player->Update(deltaTime, state.player, state.enemies, LEVEL3_ENEMY_COUNT, state.map);
+    for (int i = 0; i < LEVEL3_ENEMY_COUNT; ++i) {
+        state.enemies[i].Update(deltaTime, state.player, state.enemies, LEVEL3_ENEMY_COUNT, state.map);
+    }
     if (state.player->numLives == 0) {
         state.nextScene = 4;
     }
-    if (state.player->position.y <= -10) {
+    bool anyAlive = false;
+    for (int i = 0; i < LEVEL3_ENEMY_COUNT; ++i) {
+        if (state.enemies[i].isActive == true) {
+            anyAlive = true;
+            break;
+        }
+    }
+    if (state.player->position.x >= 12 && anyAlive == false) {
+        state.nextScene = 5;
+    }
+    if (state.player->position.y <= -10 || state.player->isActive == false) {
+        state.player->isActive = true;
         state.player->numLives -= 1;
-        cout << state.player->numLives << endl;
-        state.player->position = glm::vec3(5, 0, 0);
+        state.player->position = glm::vec3(1, 0, 0);
     }
     
 }
 void Level3::Render(ShaderProgram *program) {
+    Util::DrawText(program, Util::LoadTexture("font1.png"), "Level 3", 1.0f, -0.1f, glm::vec3(2, -2, 0));
+    Util::DrawText(program, Util::LoadTexture("font1.png"), "Lives " + std::to_string(state.player->numLives), 1.0f, -0.1f, glm::vec3(2, -3, 0));
     state.map->Render(program);
     state.player->Render(program);
+    for (int i = 0; i < LEVEL3_ENEMY_COUNT; ++i) {
+        state.enemies[i].Render(program);
+    }
 }

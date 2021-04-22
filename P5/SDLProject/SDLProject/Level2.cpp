@@ -88,20 +88,34 @@ void Level2::Initialize(int numLives) {
 }
 void Level2::Update(float deltaTime) {
     state.player->Update(deltaTime, state.player, state.enemies, LEVEL2_ENEMY_COUNT, state.map);
+    for (int i = 0; i < LEVEL2_ENEMY_COUNT; ++i) {
+        state.enemies[i].Update(deltaTime, state.player, state.enemies, LEVEL2_ENEMY_COUNT, state.map);
+    }
     if (state.player->numLives == 0) {
         state.nextScene = 4;
+    }
+    bool anyAlive = false;
+    for (int i = 0; i < LEVEL2_ENEMY_COUNT; ++i) {
+        if (state.enemies[i].isActive == true) {
+            anyAlive = true;
+            break;
+        }
     }
     if (state.player->position.x >= 12) {
         state.nextScene = 3;
     }
-    
-    if (state.player->position.y <= -10) {
+    if (state.player->position.y <= -10 || state.player->isActive == false) {
+        state.player->isActive = true;
         state.player->numLives -= 1;
-        cout << state.player->numLives << endl;
-        state.player->position = glm::vec3(5, 0, 0);
+        state.player->position = glm::vec3(1, 0, 0);
     }
 }
 void Level2::Render(ShaderProgram *program) {
+    Util::DrawText(program, Util::LoadTexture("font1.png"), "Level 2", 1.0f, -0.1f, glm::vec3(2, -2, 0));
+    Util::DrawText(program, Util::LoadTexture("font1.png"), "Lives " + std::to_string(state.player->numLives), 1.0f, -0.1f, glm::vec3(2, -3, 0));
     state.map->Render(program);
     state.player->Render(program);
+    for (int i = 0; i < LEVEL2_ENEMY_COUNT; ++i) {
+        state.enemies[i].Render(program);
+    }
 }
