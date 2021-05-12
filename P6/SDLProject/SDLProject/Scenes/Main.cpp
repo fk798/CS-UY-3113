@@ -17,7 +17,7 @@ unsigned int main_data[] =
     3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3,
     3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3,
     3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3,
-    3, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+    3, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
     3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
     3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
     3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3,
@@ -152,10 +152,11 @@ void Main::Update(float deltaTime) {
     }
 
     // entered dungeon 9
-    if ((state.player->position.x >= 0 && state.player->position.x <= 2) && (state.player->position.y <= -4 && state.player->position.y >= -6)) {
+    if ((state.player->position.x >= 0 && state.player->position.x <= 2) && (state.player->position.y <= -9 && state.player->position.y >= -10)) {
         state.nextScene = 11;
         state.player->position.x = 4.5f;
         state.player->position.y = -7.0f;
+        state.player->newPosition = glm::vec3(1.5f, -10.5f, 0);
     }
 
     // entered dungeon 10

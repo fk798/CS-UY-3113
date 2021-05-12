@@ -2,22 +2,8 @@
 #define DUNGEON_WIDTH 10
 #define DUNGEON_HEIGHT 10
 
-#define DUNGEON_ENEMY_COUNT 1
+#define DUNGEON_ENEMY_COUNT 0
 using namespace std;
-
-unsigned int dungeon_data[] =
-{
-    3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 3, 3, 3, 0, 0, 3, 3, 3, 3
-};
 
 void Dungeon::Initialize(Entity *player) {
     
@@ -31,7 +17,7 @@ void Dungeon::Initialize(Entity *player) {
     state.enemies = new Entity[DUNGEON_ENEMY_COUNT];
     GLuint enemyTextureID = Util::LoadTexture("ctg.png");
     
-    state.enemies[0].entityType = ENEMY;
+    /*state.enemies[0].entityType = ENEMY;
     state.enemies[0].textureID = enemyTextureID;
     state.enemies[0].position = glm::vec3(5, -3.0f, 0);
     state.enemies[0].speed = 1;
@@ -40,7 +26,7 @@ void Dungeon::Initialize(Entity *player) {
     //state.enemies[0].jumpPower = 5.0f;
     //state.enemies[0].acceleration = glm::vec3(0, 0, 0);
         
-    /*state.enemies[1].entityType = ENEMY;
+    state.enemies[1].entityType = ENEMY;
     state.enemies[1].textureID = enemyTextureID;
     state.enemies[1].position = glm::vec3(11, 0.0f, 0);
     state.enemies[1].speed = 1;
@@ -70,6 +56,14 @@ void Dungeon::Update(float deltaTime) {
     }
     cout << "X: " << state.player->position.x << endl;
     cout << "Y: " << state.player->position.y << endl;
+    // touches key part
+    if (dungeon_data[25] != 0 && (state.player->position.x >= 4 && state.player->position.x < 6) && (state.player->position.y <= -2 && state.player->position.y >= -3)) {
+        state.player->numDungeonsCleared += 1;
+        cout << "Number of Key Parts = " << state.player->numDungeonsCleared << endl;
+        dungeon_data[24] = 0;
+        dungeon_data[25] = 0;
+        
+    }
     // exiting dungeon
     if ((state.player->position.x >= 4 && state.player->position.x <= 7) && (state.player->position.y <= -8 && state.player->position.y >= -10)) {
         state.nextScene = 2;
