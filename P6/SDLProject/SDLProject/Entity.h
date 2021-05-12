@@ -33,9 +33,6 @@ public:
     float width = 1;
     float height = 1;
     
-    bool jump = false;
-    float jumpPower = 0;
-    
     float speed;
     
     GLuint textureID;
@@ -63,6 +60,7 @@ public:
     bool collidedRight = false;
     
     int numDungeonsCleared = 0;
+    int currentSceneNum = -1;
     
     Entity();
     

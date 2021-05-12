@@ -7,34 +7,60 @@ using namespace std;
 
 unsigned int main_data[] =
 {
-    3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-    3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3,
-    3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3,
-    3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3,
-    3, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-    3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3,
-    3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3,
-    3, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3,
-    3, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3,
-    3, 3, 3, 3, 3, 3, 2, 2, 3, 3, 3, 3, 3, 3
+    110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110,
+    110, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 110,
+    110, 110, 110, 0, 0, 0, 0, 0, 0, 0, 0, 110, 110, 110,
+    110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110,
+    110, 110, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110,
+    110, 1, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110,
+    110, 0, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110,
+    110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110, 110, 110,
+    110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 110,
+    110, 110, 110, 0, 0, 0, 0, 0, 0, 0, 0, 110, 110, 110,
+    110, 0, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110,
+    110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110,
+    110, 110, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110,
+    110, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110, 110, 110,
+    110, 110, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 110,
+    110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110, 110, 110,
+    110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 110,
+    110, 0, 110, 0, 0, 0, 0, 0, 0, 0, 0, 110, 110, 110,
+    110, 1, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 110,
+    110, 110, 110, 110, 110, 110, 2, 2, 110, 110, 110, 110, 110, 110
 };
+
+/*
+ {
+     110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110,
+     110, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 110,
+     110, 110, 110, 0, 0, 0, 0, 0, 0, 0, 0, 110, 110, 110,
+     110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110,
+     110, 110, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110,
+     110, 1, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110,
+     110, 0, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110,
+     110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110, 110, 110,
+     110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 110,
+     110, 110, 110, 0, 0, 0, 0, 0, 0, 0, 0, 110, 110, 110,
+     110, 0, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110,
+     110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110,
+     110, 110, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110,
+     110, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110, 110, 110,
+     110, 110, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 110,
+     110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110, 110, 110,
+     110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 110,
+     110, 0, 110, 0, 0, 0, 0, 0, 0, 0, 0, 110, 110, 110,
+     110, 1, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 110,
+     110, 110, 110, 110, 110, 110, 2, 2, 110, 110, 110, 110, 110, 3
+ };
+
+ */
 
 void Main::Initialize(Entity *player) {
     
     state.nextScene = -1;
     
-    GLuint mapTextureID = Util::LoadTexture("tileset.png");
-    state.map = new Map(MAIN_WIDTH, MAIN_HEIGHT, main_data, mapTextureID, 1.0f, 4, 1);
+    GLuint mapTextureID = Util::LoadTexture("medieval_tilesheet_2X.png");
+    state.map = new Map(MAIN_WIDTH, MAIN_HEIGHT, main_data, mapTextureID, 1.0f, 24, 14);
     state.player = player;
     
     /*state.enemies = new Entity[MAIN_ENEMY_COUNT];
@@ -87,10 +113,12 @@ void Main::Update(float deltaTime) {
     // exited building
     if ((state.player->position.x >= 5 && state.player->position.x <= 8) && (state.player->position.y <= -18.5 && state.player->position.y >= -20)) {
         state.nextScene = 1;
+        state.player->currentSceneNum = 1;
     }
     // entered dungeon 1
     if ((state.player->position.x >= 0 && state.player->position.x <= 2) && (state.player->position.y <= 0 && state.player->position.y >= -2)) {
         state.nextScene = 3;
+        state.player->currentSceneNum = 3;
         state.player->position.x = 4.5f;
         state.player->position.y = -7.0f;
         state.player->newPosition = glm::vec3(2.5f, -0.5f, 0);
@@ -98,6 +126,7 @@ void Main::Update(float deltaTime) {
     // entered dungeon 2
     if ((state.player->position.x >= 0 && state.player->position.x <= 2) && (state.player->position.y <= -4 && state.player->position.y >= -6)) {
         state.nextScene = 4;
+        state.player->currentSceneNum = 4;
         state.player->position.x = 4.5f;
         state.player->position.y = -7.0f;
         state.player->newPosition = glm::vec3(1.0f, -6.5f, 0);
@@ -106,6 +135,7 @@ void Main::Update(float deltaTime) {
     // entered dungeon 3
     if ((state.player->position.x >= 0 && state.player->position.x <= 2) && (state.player->position.y <= -11.5 && state.player->position.y >= -13.5)) {
         state.nextScene = 5;
+        state.player->currentSceneNum = 5;
         state.player->position.x = 4.5f;
         state.player->position.y = -7.0f;
         state.player->newPosition = glm::vec3(2.5f, -12.5f, 0);
@@ -114,6 +144,7 @@ void Main::Update(float deltaTime) {
     // entered dungeon 4
     if ((state.player->position.x >= 0 && state.player->position.x <= 2) && (state.player->position.y <= -16.5 && state.player->position.y >= -18)) {
         state.nextScene = 6;
+        state.player->currentSceneNum = 6;
         state.player->position.x = 4.5f;
         state.player->position.y = -7.0f;
         state.player->newPosition = glm::vec3(1.0f, -15.5f, 0);
@@ -122,6 +153,7 @@ void Main::Update(float deltaTime) {
     // entered dungeon 5
     if ((state.player->position.x >= 11 && state.player->position.x <= 13) && (state.player->position.y <= 0 && state.player->position.y >= -2)) {
         state.nextScene = 7;
+        state.player->currentSceneNum = 7;
         state.player->position.x = 4.5f;
         state.player->position.y = -7.0f;
         state.player->newPosition = glm::vec3(10.5f, -0.5f, 0);
@@ -130,6 +162,7 @@ void Main::Update(float deltaTime) {
     // entered dungeon 6
     if ((state.player->position.x >= 11 && state.player->position.x <= 13) && (state.player->position.y <= -6.5 && state.player->position.y >= -8.5)) {
         state.nextScene = 8;
+        state.player->currentSceneNum = 8;
         state.player->position.x = 4.5f;
         state.player->position.y = -7.0f;
         state.player->newPosition = glm::vec3(10.5f, -7.5f, 0);
@@ -138,6 +171,7 @@ void Main::Update(float deltaTime) {
     // entered dungeon 7
     if ((state.player->position.x >= 11 && state.player->position.x <= 13) && (state.player->position.y <= -12.5 && state.player->position.y >= -14.5)) {
         state.nextScene = 9;
+        state.player->currentSceneNum = 9;
         state.player->position.x = 4.5f;
         state.player->position.y = -7.0f;
         state.player->newPosition = glm::vec3(10.5f, -13.5f, 0);
@@ -146,6 +180,7 @@ void Main::Update(float deltaTime) {
     // entered dungeon 8
     if ((state.player->position.x >= 11 && state.player->position.x <= 13) && (state.player->position.y <= -14.5 && state.player->position.y >= -16.5)) {
         state.nextScene = 10;
+        state.player->currentSceneNum = 10;
         state.player->position.x = 4.5f;
         state.player->position.y = -7.0f;
         state.player->newPosition = glm::vec3(10.5f, -15.5f, 0);
@@ -154,6 +189,7 @@ void Main::Update(float deltaTime) {
     // entered dungeon 9
     if ((state.player->position.x >= 0 && state.player->position.x <= 2) && (state.player->position.y <= -9 && state.player->position.y >= -10)) {
         state.nextScene = 11;
+        state.player->currentSceneNum = 11;
         state.player->position.x = 4.5f;
         state.player->position.y = -7.0f;
         state.player->newPosition = glm::vec3(1.5f, -10.5f, 0);
@@ -162,6 +198,7 @@ void Main::Update(float deltaTime) {
     // entered dungeon 10
     if ((state.player->position.x >= 11 && state.player->position.x <= 13) && (state.player->position.y <= -16.5 && state.player->position.y >= -18.5)) {
         state.nextScene = 12;
+        state.player->currentSceneNum = 12;
         state.player->position.x = 4.5f;
         state.player->position.y = -7.0f;
         state.player->newPosition = glm::vec3(10.5f, -17.5f, 0);

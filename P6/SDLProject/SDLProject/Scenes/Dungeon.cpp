@@ -9,8 +9,8 @@ void Dungeon::Initialize(Entity *player) {
     
     state.nextScene = -1;
     
-    GLuint mapTextureID = Util::LoadTexture("tileset.png");
-    state.map = new Map(DUNGEON_WIDTH, DUNGEON_HEIGHT, dungeon_data, mapTextureID, 1.0f, 4, 1);
+    GLuint mapTextureID = Util::LoadTexture("medieval_tilesheet_2X.png");
+    state.map = new Map(DUNGEON_WIDTH, DUNGEON_HEIGHT, dungeon_data, mapTextureID, 1.0f, 24, 14);
     // Initialize Player
     state.player = player;
     
@@ -38,6 +38,7 @@ void Dungeon::Initialize(Entity *player) {
     for (int i = 0; i < DUNGEON_ENEMY_COUNT; ++i) {
         state.enemies[i].isActive = true;
     }
+    
 }
 void Dungeon::Update(float deltaTime) {
     state.player->Update(deltaTime, state.player, state.enemies, DUNGEON_ENEMY_COUNT, state.map);
@@ -57,11 +58,12 @@ void Dungeon::Update(float deltaTime) {
     cout << "X: " << state.player->position.x << endl;
     cout << "Y: " << state.player->position.y << endl;
     // touches key part
-    if (dungeon_data[25] != 0 && (state.player->position.x >= 4 && state.player->position.x < 6) && (state.player->position.y <= -2 && state.player->position.y >= -3)) {
+    if (dungeon_data[25] != 208 && (state.player->position.x >= 4 && state.player->position.x < 6) && (state.player->position.y <= -2 && state.player->position.y >= -3)) {
         state.player->numDungeonsCleared += 1;
-        cout << "Number of Key Parts = " << state.player->numDungeonsCleared << endl;
-        dungeon_data[24] = 0;
-        dungeon_data[25] = 0;
+        //cout << "Number of Key Parts = " << state.player->numDungeonsCleared << endl;
+        dungeon_data[24] = 208;
+        dungeon_data[25] = 208;
+        state.nextScene = state.player->currentSceneNum;
         
     }
     // exiting dungeon
