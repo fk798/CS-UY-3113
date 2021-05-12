@@ -110,11 +110,11 @@ void Initialize() {
     // Audio stuff
     // Start Audio
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
-    music = Mix_LoadMUS("Styles/dooblydoo.mp3");
+    music = Mix_LoadMUS("Great Little Challenge.mp3");
     Mix_PlayMusic(music, -1);
     Mix_VolumeMusic(MIX_MAX_VOLUME / 4);
     
-    bounce = Mix_LoadWAV("Styles/bounce.wav");
+    bounce = Mix_LoadWAV("bounce.wav");
     
     //sceneList[0] = new Menu();
     //sceneList[1] = new Main();
@@ -153,10 +153,10 @@ void ProcessInput() {
                         
                     case SDLK_SPACE:
                         // Some sort of action
-                        if (currentScene->state.player->collidedBottom) {
+                        /*if (currentScene->state.player->collidedBottom) {
                             //currentScene->state.player->jump = true;
                             Mix_PlayChannel(-1, bounce, 0);
-                        }
+                        }*/
                         break;
                     case SDLK_RETURN:
                         if (currentScene == sceneList[0]) {

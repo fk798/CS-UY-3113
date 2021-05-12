@@ -2,7 +2,7 @@
 #define DUNGEON_WIDTH 10
 #define DUNGEON_HEIGHT 10
 
-#define DUNGEON_ENEMY_COUNT 0
+#define DUNGEON_ENEMY_COUNT 1
 using namespace std;
 
 void Dungeon::Initialize(Entity *player) {
@@ -17,7 +17,7 @@ void Dungeon::Initialize(Entity *player) {
     state.enemies = new Entity[DUNGEON_ENEMY_COUNT];
     GLuint enemyTextureID = Util::LoadTexture("ctg.png");
     
-    /*state.enemies[0].entityType = ENEMY;
+    state.enemies[0].entityType = ENEMY;
     state.enemies[0].textureID = enemyTextureID;
     state.enemies[0].position = glm::vec3(5, -3.0f, 0);
     state.enemies[0].speed = 1;
@@ -25,7 +25,7 @@ void Dungeon::Initialize(Entity *player) {
     state.enemies[0].aiState = IDLE;
     //state.enemies[0].jumpPower = 5.0f;
     //state.enemies[0].acceleration = glm::vec3(0, 0, 0);
-        
+    /*
     state.enemies[1].entityType = ENEMY;
     state.enemies[1].textureID = enemyTextureID;
     state.enemies[1].position = glm::vec3(11, 0.0f, 0);
@@ -55,10 +55,10 @@ void Dungeon::Update(float deltaTime) {
             break;
         }
     }
-    cout << "X: " << state.player->position.x << endl;
-    cout << "Y: " << state.player->position.y << endl;
+    //cout << "X: " << state.player->position.x << endl;
+    //cout << "Y: " << state.player->position.y << endl;
     // touches key part
-    if (dungeon_data[25] != 208 && (state.player->position.x >= 4 && state.player->position.x < 6) && (state.player->position.y <= -2 && state.player->position.y >= -3)) {
+    if (dungeon_data[25] != 208 && (state.player->position.x >= 4 && state.player->position.x < 6) && (state.player->position.y <= -1.5 && state.player->position.y >= -3)) {
         state.player->numDungeonsCleared += 1;
         //cout << "Number of Key Parts = " << state.player->numDungeonsCleared << endl;
         dungeon_data[24] = 208;
@@ -72,14 +72,6 @@ void Dungeon::Update(float deltaTime) {
         state.player->position.x = state.player->newPosition.x;
         state.player->position.y = state.player->newPosition.y;
     }
-    /*if (state.player->position.x >= 12 && state.player->position.y <= -3) {
-        state.nextScene = 2;
-    }
-    if (state.player->position.y <= -10 || state.player->isActive == false) {
-        state.player->isActive = true;
-        state.player->numLives -= 1;
-        state.player->position = glm::vec3(1, 0, 0);
-    }*/
 }
 void Dungeon::Render(ShaderProgram *program) {
     state.map->Render(program);

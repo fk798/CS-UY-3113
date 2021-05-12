@@ -9,13 +9,11 @@
 /* Begin PBXBuildFile section */
 		982CCDCD264B9CA8001E93C6 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 982CCDCB264B9CA8001E93C6 /* Main.cpp */; };
 		982CCDD0264B9CB4001E93C6 /* Dungeon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 982CCDCE264B9CB4001E93C6 /* Dungeon.cpp */; };
-		982CCDD2264C20B6001E93C6 /* NES Mansion Tile Set.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 982CCDD1264C20AE001E93C6 /* NES Mansion Tile Set.png */; };
 		982CCDD5264C6073001E93C6 /* medieval_tilesheet_2X.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 982CCDD4264C602A001E93C6 /* medieval_tilesheet_2X.png */; };
+		982CCDD7264C8517001E93C6 /* Great Little Challenge.mp3 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 982CCDD6264C8490001E93C6 /* Great Little Challenge.mp3 */; };
 		986517BE26140DEE00CDFAA1 /* ctg.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 986517BD26140DBC00CDFAA1 /* ctg.png */; };
 		9865523725FAC24500D3568C /* george_0.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9865523625FAC23600D3568C /* george_0.png */; };
-		9875B669262BC77700588479 /* dooblydoo.mp3 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9875B668262BC75400588479 /* dooblydoo.mp3 */; };
 		9875B66B262BC77A00588479 /* bounce.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9875B667262BC74100588479 /* bounce.wav */; };
-		9875B66E262DDED800588479 /* tileset.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9875B66D262DDEC900588479 /* tileset.png */; };
 		9875B672262DDFC500588479 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9875B670262DDFC500588479 /* Map.cpp */; };
 		9875B677262FCB2B00588479 /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9875B675262FCB2B00588479 /* Util.cpp */; };
 		9875B67C262FCE2100588479 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9875B67A262FCE2100588479 /* Scene.cpp */; };
@@ -23,10 +21,6 @@
 		9875B6952630C55B00588479 /* Lose.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9875B6932630C55B00588479 /* Lose.cpp */; };
 		9875B69A2631064F00588479 /* Win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9875B6982631064F00588479 /* Win.cpp */; };
 		987E42D025FC5964001B4E2A /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 987E42CE25FC5964001B4E2A /* Entity.cpp */; };
-		987E42D525FC5BFA001B4E2A /* platformPack_tile001.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 987E42D425FC5BEF001B4E2A /* platformPack_tile001.png */; };
-		987E42D825FC8C66001B4E2A /* platformPack_tile016.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 987E42D725FC8C53001B4E2A /* platformPack_tile016.png */; };
-		987E42DB25FC8CF7001B4E2A /* playerShip3_orange.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 987E42DA25FC8CEC001B4E2A /* playerShip3_orange.png */; };
-		987E42DE25FD255F001B4E2A /* platformPack_tile015.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 987E42DD25FD2557001B4E2A /* platformPack_tile015.png */; };
 		987E42E125FD28C3001B4E2A /* font1.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 987E42E025FD28BB001B4E2A /* font1.png */; };
 		DBDF1B532323DE3F007CECB1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBDF1B522323DE3F007CECB1 /* main.cpp */; };
 		DBDF1B5E2323DE8D007CECB1 /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBDF1B5D2323DE8D007CECB1 /* ShaderProgram.cpp */; };
@@ -45,17 +39,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
+				982CCDD7264C8517001E93C6 /* Great Little Challenge.mp3 in CopyFiles */,
 				982CCDD5264C6073001E93C6 /* medieval_tilesheet_2X.png in CopyFiles */,
-				982CCDD2264C20B6001E93C6 /* NES Mansion Tile Set.png in CopyFiles */,
-				9875B66E262DDED800588479 /* tileset.png in CopyFiles */,
 				9875B66B262BC77A00588479 /* bounce.wav in CopyFiles */,
-				9875B669262BC77700588479 /* dooblydoo.mp3 in CopyFiles */,
 				986517BE26140DEE00CDFAA1 /* ctg.png in CopyFiles */,
 				987E42E125FD28C3001B4E2A /* font1.png in CopyFiles */,
-				987E42DE25FD255F001B4E2A /* platformPack_tile015.png in CopyFiles */,
-				987E42DB25FC8CF7001B4E2A /* playerShip3_orange.png in CopyFiles */,
-				987E42D825FC8C66001B4E2A /* platformPack_tile016.png in CopyFiles */,
-				987E42D525FC5BFA001B4E2A /* platformPack_tile001.png in CopyFiles */,
 				9865523725FAC24500D3568C /* george_0.png in CopyFiles */,
 				DBDF1B612323DE9E007CECB1 /* shaders in CopyFiles */,
 			);
@@ -68,14 +56,12 @@
 		982CCDCC264B9CA8001E93C6 /* Main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Main.h; sourceTree = "<group>"; };
 		982CCDCE264B9CB4001E93C6 /* Dungeon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Dungeon.cpp; sourceTree = "<group>"; };
 		982CCDCF264B9CB4001E93C6 /* Dungeon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dungeon.h; sourceTree = "<group>"; };
-		982CCDD1264C20AE001E93C6 /* NES Mansion Tile Set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NES Mansion Tile Set.png"; sourceTree = "<group>"; };
 		982CCDD3264C2450001E93C6 /* stairs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stairs.png; sourceTree = "<group>"; };
 		982CCDD4264C602A001E93C6 /* medieval_tilesheet_2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medieval_tilesheet_2X.png; sourceTree = "<group>"; };
+		982CCDD6264C8490001E93C6 /* Great Little Challenge.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Great Little Challenge.mp3"; sourceTree = "<group>"; };
 		986517BD26140DBC00CDFAA1 /* ctg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ctg.png; sourceTree = "<group>"; };
 		9865523625FAC23600D3568C /* george_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = george_0.png; sourceTree = "<group>"; };
 		9875B667262BC74100588479 /* bounce.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bounce.wav; sourceTree = "<group>"; };
-		9875B668262BC75400588479 /* dooblydoo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dooblydoo.mp3; sourceTree = "<group>"; };
-		9875B66D262DDEC900588479 /* tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tileset.png; sourceTree = "<group>"; };
 		9875B670262DDFC500588479 /* Map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
 		9875B671262DDFC500588479 /* Map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 		9875B675262FCB2B00588479 /* Util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Util.cpp; sourceTree = "<group>"; };
@@ -90,10 +76,6 @@
 		9875B6992631064F00588479 /* Win.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Win.h; sourceTree = "<group>"; };
 		987E42CE25FC5964001B4E2A /* Entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		987E42CF25FC5964001B4E2A /* Entity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
-		987E42D425FC5BEF001B4E2A /* platformPack_tile001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platformPack_tile001.png; sourceTree = "<group>"; };
-		987E42D725FC8C53001B4E2A /* platformPack_tile016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platformPack_tile016.png; sourceTree = "<group>"; };
-		987E42DA25FC8CEC001B4E2A /* playerShip3_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playerShip3_orange.png; sourceTree = "<group>"; };
-		987E42DD25FD2557001B4E2A /* platformPack_tile015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platformPack_tile015.png; sourceTree = "<group>"; };
 		987E42E025FD28BB001B4E2A /* font1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font1.png; sourceTree = "<group>"; };
 		DBDF1B4F2323DE3F007CECB1 /* SDLProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDLProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBDF1B522323DE3F007CECB1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -164,19 +146,13 @@
 		DBDF1B512323DE3F007CECB1 /* SDLProject */ = {
 			isa = PBXGroup;
 			children = (
+				982CCDD6264C8490001E93C6 /* Great Little Challenge.mp3 */,
 				982CCDD4264C602A001E93C6 /* medieval_tilesheet_2X.png */,
 				982CCDD3264C2450001E93C6 /* stairs.png */,
-				982CCDD1264C20AE001E93C6 /* NES Mansion Tile Set.png */,
 				982CCDCA264B9C1F001E93C6 /* Scenes */,
-				9875B66D262DDEC900588479 /* tileset.png */,
-				9875B668262BC75400588479 /* dooblydoo.mp3 */,
 				9875B667262BC74100588479 /* bounce.wav */,
 				986517BD26140DBC00CDFAA1 /* ctg.png */,
 				987E42E025FD28BB001B4E2A /* font1.png */,
-				987E42DD25FD2557001B4E2A /* platformPack_tile015.png */,
-				987E42DA25FC8CEC001B4E2A /* playerShip3_orange.png */,
-				987E42D725FC8C53001B4E2A /* platformPack_tile016.png */,
-				987E42D425FC5BEF001B4E2A /* platformPack_tile001.png */,
 				9865523625FAC23600D3568C /* george_0.png */,
 				DBDF1B5B2323DE8D007CECB1 /* glm */,
 				DBDF1B5D2323DE8D007CECB1 /* ShaderProgram.cpp */,
