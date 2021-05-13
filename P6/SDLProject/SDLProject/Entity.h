@@ -15,8 +15,8 @@
 
 enum EntityType {PLAYER, PLATFORM, ENEMY};
 
-enum AIType {WALKER, WAITANDGO, JUMPER};
-enum AIState {IDLE, WALKING, ATTACKING, JUMPING};
+enum AIType {WAITANDGO};
+enum AIState {IDLE, WALKING};
 
 class Entity {
 public:
@@ -61,6 +61,7 @@ public:
     
     int numDungeonsCleared = 0;
     int currentSceneNum = -1;
+    bool resetLocation = false;
     
     Entity();
     
@@ -79,5 +80,4 @@ public:
     void AI(Entity *player);
     void AIWalker(Entity *platforms, int platformCount);
     void AIWaitAndGo(Entity *player);
-    void AIJumper();
 };

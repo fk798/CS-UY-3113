@@ -1,6 +1,9 @@
 #include "Entity.h"
 #include <iostream>
+#include <SDL_mixer.h>
 using namespace std;
+
+Mix_Chunk *death;
 
 Entity::Entity()
 {
@@ -72,31 +75,16 @@ void Entity::CheckEnemyCollided(Entity *enemies, int enemyCount) {
     collidedLeft = false;
     collidedRight = false;
     collidedTop = false;
+    collidedBottom = false;
     CheckCollisionsX(enemies, enemyCount);
-    if (collidedLeft == true || collidedRight == true) isActive = false;
+    if (collidedLeft == true || collidedRight == true) resetLocation = true;
     CheckCollisionsY(enemies, enemyCount);
-    if (collidedTop == true) isActive = false;
-    if (collidedBottom == true) {
-        for (int i = 0; i < enemyCount; ++i) {
-            if (enemies[i].collidedTop == true) {
-                enemies[i].isActive = false;
-            }
-        }
+    if (collidedTop == true || collidedBottom == true) resetLocation = true;
+    death = Mix_LoadWAV("bounce.wav");
+    if (resetLocation) {
+        Mix_PlayChannel(-1, death, 0);
     }
     
-    /*for (int i = 0; i < enemyCount; ++i) {
-        if (CheckCollision(&enemies[i])) {
-            if (collidedBottom && enemies[i].collidedTop) {
-                cout << "enemy dead" << endl;
-                enemies[i].isActive = false;
-            }
-            else {
-                cout << "we ded" << endl;
-                isActive = false;
-                break;
-            }
-        }
-    }*/
 }
 
 void Entity::CheckCollisionsY(Map *map)
@@ -162,20 +150,9 @@ void Entity::CheckCollisionsX(Map *map)
 
 void Entity::AI(Entity *player) {
     switch(aiType) {
-        case WALKER:
-            break;
-        /*case WALKER:
-            AIWalker(platforms, platformCount);
-            break;*/
         case WAITANDGO:
             AIWaitAndGo(player);
             break;
-    }
-}
-
-void Entity::AIWalker(Entity *platforms, int platformCount) {
-    if (movement == glm::vec3(0)) {
-        movement = glm::vec3(-1, 0, 0);
     }
 }
 
@@ -251,8 +228,6 @@ void Entity::Update(float deltaTime, Entity *player, Entity *objects, int object
     
     
     if(entityType == PLAYER) {
-        //CheckCollisionsY(objects, objectCount);
-        //CheckCollisionsX(objects, objectCount);
         CheckEnemyCollided(objects, objectCount);
     }
     

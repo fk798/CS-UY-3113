@@ -95,6 +95,7 @@ void Main::Update(float deltaTime) {
     }
     if (state.player->numLives == 0) {
         state.nextScene = 4;
+        state.player->position = glm::vec3(0,0,0);
     }
     bool anyAlive = false;
     for (int i = 0; i < MAIN_ENEMY_COUNT; ++i) {

@@ -15,7 +15,7 @@ void Dungeon::Initialize(Entity *player) {
     state.player = player;
     
     state.enemies = new Entity[DUNGEON_ENEMY_COUNT];
-    GLuint enemyTextureID = Util::LoadTexture("ctg.png");
+    GLuint enemyTextureID = Util::LoadTexture("knight.png");
     
     state.enemies[0].entityType = ENEMY;
     state.enemies[0].textureID = enemyTextureID;
@@ -45,8 +45,14 @@ void Dungeon::Update(float deltaTime) {
     for (int i = 0; i < DUNGEON_ENEMY_COUNT; ++i) {
         state.enemies[i].Update(deltaTime, state.player, state.enemies, DUNGEON_ENEMY_COUNT, state.map);
     }
+    if (state.player->resetLocation == true) {
+        state.player->resetLocation = false;
+        state.player->numLives -= 1;
+        state.nextScene = 2;
+        state.player->position = glm::vec3(7, -10, 0);
+    }
     if (state.player->numLives == 0) {
-        state.nextScene = 4;
+        state.nextScene = 0;
     }
     bool anyAlive = false;
     for (int i = 0; i < DUNGEON_ENEMY_COUNT; ++i) {
@@ -58,12 +64,14 @@ void Dungeon::Update(float deltaTime) {
     //cout << "X: " << state.player->position.x << endl;
     //cout << "Y: " << state.player->position.y << endl;
     // touches key part
-    if (dungeon_data[25] != 208 && (state.player->position.x >= 4 && state.player->position.x < 6) && (state.player->position.y <= -1.5 && state.player->position.y >= -3)) {
+    if (dungeon_data[25] != 208 && (state.player->position.x >= 4 && state.player->position.x < 6) && (state.player->position.y <= -1 && state.player->position.y >= -3)) {
         state.player->numDungeonsCleared += 1;
         //cout << "Number of Key Parts = " << state.player->numDungeonsCleared << endl;
         dungeon_data[24] = 208;
         dungeon_data[25] = 208;
+        state.enemies[0].newPosition = state.enemies[0].position;
         state.nextScene = state.player->currentSceneNum;
+        state.enemies[0].position = state.enemies[0].newPosition;
         
     }
     // exiting dungeon

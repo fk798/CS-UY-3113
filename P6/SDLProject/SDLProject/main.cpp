@@ -41,7 +41,7 @@ Mix_Chunk *bounce;
 
 // Add some variables and SwitchToScene function
 Scene *currentScene;
-Scene *sceneList[13];
+Scene *sceneList[14];
 
 void SwitchToScene(Scene *scene) {
     Entity *player;
@@ -52,12 +52,12 @@ void SwitchToScene(Scene *scene) {
         player->movement = glm::vec3(0);
         player->acceleration = glm::vec3(0, 0, 0);
         player->speed = 3.0f;
-        player->textureID = Util::LoadTexture("george_0.png");
+        player->textureID = Util::LoadTexture("red.png");
         
-        player->animRight = new int[4] {3, 7, 11, 15};
-        player->animLeft = new int[4] {1, 5, 9, 13};
-        player->animUp = new int[4] {2, 6, 10, 14};
-        player->animDown = new int[4] {0, 4, 8, 12};
+        player->animRight = new int[4] {8, 9, 10, 11};
+        player->animLeft = new int[4] {4, 5, 6, 7};
+        player->animUp = new int[4] {12, 13, 14, 15};
+        player->animDown = new int[4] {0, 1, 2, 3};
         
         player->animIndices = player->animRight;
         player->animFrames = 4;
@@ -126,7 +126,8 @@ void Initialize() {
     for (int i = 3; i < 13; ++i) {
         sceneList[i] = new Dungeon();
     }
-    SwitchToScene(sceneList[2]);
+    sceneList[13] = new Menu();
+    SwitchToScene(sceneList[13]);
 }
 
 void ProcessInput() {
@@ -159,7 +160,7 @@ void ProcessInput() {
                         }*/
                         break;
                     case SDLK_RETURN:
-                        if (currentScene == sceneList[0]) {
+                        if (currentScene == sceneList[13]) {
                             currentScene->Update(-1);
                         }
                 }
